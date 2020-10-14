@@ -69,8 +69,8 @@ export default class Hanoi {
           // eslint-disable-next-line no-console
           promise.then(() => console.log(`calculated for ${countOfRings}`));
           return promise.then(result => save({ count: countOfRings, from, to }, result).then(
-              () => Promise.resolve(result),
-            )).then(resolveSolution);
+            () => Promise.resolve(result),
+          )).then(resolveSolution);
         })
         .catch((e) => {
           throw e;
