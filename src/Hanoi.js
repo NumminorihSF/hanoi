@@ -25,7 +25,7 @@ export default class Hanoi {
 
   static solveAsync(countOfRings, from, to) {
     if (!(Number(countOfRings) > 0)) {
-      throw new Error(INVALID_SOLVE_ARGUMENTS);
+      return Promise.reject(new Error(INVALID_SOLVE_ARGUMENTS));
     }
     if (countOfRings === 1) {
       return Promise.resolve([{ from, to }]);
@@ -69,8 +69,8 @@ export default class Hanoi {
           // eslint-disable-next-line no-console
           promise.then(() => console.log(`calculated for ${countOfRings}`));
           return promise.then(result => save({ count: countOfRings, from, to }, result).then(
-              () => Promise.resolve(result),
-            )).then(resolveSolution);
+            () => Promise.resolve(result),
+          )).then(resolveSolution);
         })
         .catch((e) => {
           throw e;
